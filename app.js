@@ -216,6 +216,53 @@ function importMarkdown() {
   withTempText(importBtn, `已导入 ${importedCount} 项`, '粘贴导入');
 }
 
+function downloadMarkdown() {
+  const markdown = buildMarkdown();
+  if (!markdown) {
+    downloadBtn.textContent = '无可下载内容';
+    setTimeout(() => {
+      downloadBtn.textContent = '下载 Markdown';
+    }, 1200);
+    return;
+  }
+
+  const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'character-card.md';
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(link.href);
+}
+
+async function openImportDialog() {
+  importTextarea.value = '';
+
+  try {
+    const text = await navigator.clipboard.readText();
+    if (text.includes('## ')) {
+      importTextarea.value = text;
+    }
+  } catch {
+    // 忽略剪贴板读取失败
+  }
+
+  importDialog.showModal();
+  importTextarea.focus();
+}
+
+function importMarkdown() {
+  const parsed = parseMarkdown(importTextarea.value);
+
+  fieldConfig.forEach((field) => {
+    values[field.key] = parsed[field.key] || '';
+  });
+
+  importDialog.close();
+  renderCards();
+}
+
 document.querySelector('#save-btn').addEventListener('click', saveField);
 document.querySelector('#cancel-btn').addEventListener('click', () => {
   dialog.close();
