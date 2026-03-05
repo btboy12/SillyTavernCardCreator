@@ -13,7 +13,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: linear-gradient(180deg, #0f1220 0%, #111935 100%);
-  padding: 24px 20px 96px;
+  padding: 24px 20px 120px;
 }
 
 .page-header {
@@ -70,10 +70,20 @@ body {
   -webkit-box-orient: vertical;
 }
 
-.export-btn {
+.field-preview.is-placeholder {
+  color: #9ba8de;
+  font-style: italic;
+}
+
+.action-bar {
   position: fixed;
   right: 20px;
   bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
   border: none;
   border-radius: 999px;
   padding: 12px 18px;
@@ -84,7 +94,11 @@ body {
   box-shadow: 0 8px 24px rgba(48, 70, 190, 0.45);
 }
 
-.export-btn:active {
+.action-btn.secondary {
+  background: #273567;
+}
+
+.action-btn:active {
   transform: scale(0.98);
 }
 
@@ -114,7 +128,8 @@ body {
   margin-bottom: 8px;
 }
 
-#dialog-textarea {
+#dialog-textarea,
+#import-textarea {
   width: 100%;
   border-radius: 10px;
   border: 1px solid #30407a;
@@ -140,12 +155,14 @@ body {
   cursor: pointer;
 }
 
-#cancel-btn {
+#cancel-btn,
+#import-cancel-btn {
   background: #25305d;
   color: #dbe2ff;
 }
 
-#save-btn {
+#save-btn,
+#import-save-btn {
   background: #6f82ff;
   color: white;
 }
