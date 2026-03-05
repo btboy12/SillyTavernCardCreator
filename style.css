@@ -12,7 +12,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #0f1220 0%, #111935 100%);
+  background: radial-gradient(circle at top, #1c2754 0%, #111935 40%, #0f1220 100%);
   padding: 24px 20px 120px;
 }
 
@@ -77,29 +77,46 @@ body {
 
 .action-bar {
   position: fixed;
-  right: 20px;
+  left: 50%;
   bottom: 20px;
+  transform: translateX(-50%);
   display: flex;
   gap: 10px;
+  padding: 8px;
+  border: 1px solid rgba(146, 163, 245, 0.3);
+  border-radius: 999px;
+  background: rgba(14, 21, 48, 0.82);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 .action-btn {
-  border: none;
+  border: 1px solid transparent;
   border-radius: 999px;
-  padding: 12px 18px;
-  font-size: 0.95rem;
-  background: #6f82ff;
+  padding: 10px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(48, 70, 190, 0.45);
+  background: linear-gradient(135deg, #6f82ff 0%, #5e72f2 100%);
+  transition: 140ms transform ease, 140ms filter ease, 140ms border-color ease;
 }
 
 .action-btn.secondary {
-  background: #273567;
+  background: rgba(47, 64, 126, 0.8);
+  border-color: rgba(142, 160, 235, 0.28);
+  color: #e8edff;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.07);
 }
 
 .action-btn:active {
-  transform: scale(0.98);
+  transform: translateY(0);
+  filter: brightness(0.97);
 }
 
 .editor-dialog {
@@ -165,4 +182,20 @@ body {
 #import-save-btn {
   background: #6f82ff;
   color: white;
+}
+
+@media (max-width: 640px) {
+  .action-bar {
+    width: calc(100% - 24px);
+    max-width: 540px;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    border-radius: 16px;
+  }
+
+  .action-btn {
+    flex: 1 1 150px;
+    text-align: center;
+  }
 }
