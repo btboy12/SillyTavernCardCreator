@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SillyTavern 角色卡编辑器</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>SillyTavern 角色卡编辑器</h1>
+      <p>默认内容留空，仅显示示例占位。支持粘贴导入、复制 Markdown、下载 Markdown。</p>
+    </header>
+
+    <main id="card-grid" class="card-grid" aria-label="角色卡字段预览"></main>
+
+    <div class="floating-actions" aria-label="导出与导入操作">
+      <button id="import-btn" class="action-btn action-btn-secondary" type="button">粘贴导入</button>
+      <button id="export-btn" class="action-btn" type="button">复制 Markdown</button>
+      <button id="download-btn" class="action-btn" type="button">下载 Markdown</button>
+    </div>
+
+    <dialog id="editor-dialog" class="editor-dialog">
+      <form method="dialog" class="dialog-shell">
+        <header>
+          <h2 id="dialog-title">编辑字段</h2>
+        </header>
+        <label class="dialog-label" for="dialog-textarea">内容</label>
+        <textarea id="dialog-textarea" rows="14"></textarea>
+        <menu class="dialog-actions">
+          <button id="cancel-btn" type="button" value="cancel">取消</button>
+          <button id="save-btn" type="button" value="default">保存</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
