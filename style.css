@@ -31,6 +31,14 @@ body {
   color: #c6cef7;
 }
 
+.form-hint {
+  font-weight: 600;
+}
+
+.form-hint.is-error {
+  color: #ffb4b4;
+}
+
 .card-grid {
   max-width: 1100px;
   margin: 0 auto;
@@ -46,6 +54,10 @@ body {
   padding: 14px;
   cursor: pointer;
   transition: 120ms transform ease, 120ms border-color ease;
+}
+
+.field-card.required-empty {
+  border-color: #e38b8b;
 }
 
 .field-card:hover {
@@ -114,11 +126,6 @@ body {
   filter: brightness(1.07);
 }
 
-.action-btn:active {
-  transform: translateY(0);
-  filter: brightness(0.97);
-}
-
 .editor-dialog {
   border: none;
   border-radius: 16px;
@@ -145,6 +152,12 @@ body {
   margin-bottom: 8px;
 }
 
+.dialog-tip {
+  margin: 0 0 12px;
+  color: #c6cef7;
+  font-size: 0.92rem;
+}
+
 #dialog-textarea,
 #import-textarea {
   width: 100%;
@@ -157,6 +170,43 @@ body {
   resize: vertical;
 }
 
+.block-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.block-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #30407a;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.block-name {
+  font-size: 0.95rem;
+}
+
+.block-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.block-actions button,
+.dialog-actions button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.block-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .dialog-actions {
   margin: 14px 0 0;
   padding: 0;
@@ -165,21 +215,21 @@ body {
   gap: 10px;
 }
 
-.dialog-actions button {
-  border: none;
-  border-radius: 8px;
-  padding: 8px 14px;
-  cursor: pointer;
+.manage-actions {
+  justify-content: space-between;
 }
 
 #cancel-btn,
-#import-cancel-btn {
+#import-cancel-btn,
+#manage-close-btn,
+.block-actions button {
   background: #25305d;
   color: #dbe2ff;
 }
 
 #save-btn,
-#import-save-btn {
+#import-save-btn,
+#add-block-btn {
   background: #6f82ff;
   color: white;
 }
@@ -187,7 +237,7 @@ body {
 @media (max-width: 640px) {
   .action-bar {
     width: calc(100% - 24px);
-    max-width: 540px;
+    max-width: 620px;
     justify-content: center;
     gap: 8px;
     flex-wrap: wrap;

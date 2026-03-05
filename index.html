@@ -9,16 +9,21 @@
   <body>
     <header class="page-header">
       <h1>SillyTavern 角色卡编辑器</h1>
-      <p>默认内容留空，仅显示示例占位。支持粘贴 Markdown 一键导入，并可一键复制或下载。</p>
+      <p>支持上传 / 粘贴 Markdown 导入，支持自定义 block 与排序；系统提示词固定第一段，角色名固定第二段。</p>
+      <p id="form-hint" class="form-hint">角色名为必填项：保存/导出前会校验。</p>
     </header>
 
     <main id="card-grid" class="card-grid" aria-label="角色卡字段预览"></main>
 
     <div class="action-bar">
       <button id="import-btn" class="action-btn secondary" type="button">粘贴导入</button>
+      <button id="upload-btn" class="action-btn secondary" type="button">上传 .md</button>
+      <button id="manage-btn" class="action-btn secondary" type="button">管理 Block</button>
       <button id="download-btn" class="action-btn secondary" type="button">下载 Markdown</button>
       <button id="export-btn" class="action-btn" type="button">复制 Markdown</button>
     </div>
+
+    <input id="upload-input" type="file" accept=".md,text/markdown,text/plain" hidden />
 
     <dialog id="editor-dialog" class="editor-dialog">
       <form method="dialog" class="dialog-shell">
@@ -39,12 +44,26 @@
         <header>
           <h2>粘贴 Markdown 导入</h2>
         </header>
-        <label class="dialog-label" for="import-textarea">请粘贴导出的 Markdown 内容</label>
-        <textarea id="import-textarea" rows="14" placeholder="## 角色名称&#10;...&#10;&#10;## 角色描述&#10;..."></textarea>
+        <label class="dialog-label" for="import-textarea">请粘贴 Markdown 内容</label>
+        <textarea id="import-textarea" rows="14"></textarea>
         <menu class="dialog-actions">
           <button id="import-cancel-btn" type="button">取消</button>
           <button id="import-save-btn" type="button">导入</button>
         </menu>
+      </form>
+    </dialog>
+
+    <dialog id="manage-dialog" class="editor-dialog">
+      <form method="dialog" class="dialog-shell">
+        <header>
+          <h2>管理 Block</h2>
+        </header>
+        <p class="dialog-tip">系统提示词与角色名为固定顺序，其余 block 可上移/下移/删除。</p>
+        <div id="block-list" class="block-list"></div>
+        <div class="dialog-actions manage-actions">
+          <button id="add-block-btn" type="button">新增 Block</button>
+          <button id="manage-close-btn" type="button">完成</button>
+        </div>
       </form>
     </dialog>
 
