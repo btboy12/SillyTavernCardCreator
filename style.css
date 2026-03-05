@@ -1,0 +1,183 @@
+:root {
+  color-scheme: light;
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #0f1220;
+  color: #f3f5ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f1220 0%, #111935 100%);
+  padding: 24px 20px 110px;
+}
+
+.page-header {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.page-header p {
+  margin: 10px 0 0;
+  color: #c6cef7;
+}
+
+.card-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.field-card {
+  border: 1px solid #2d3767;
+  border-radius: 14px;
+  background: rgba(24, 31, 60, 0.85);
+  padding: 14px;
+  cursor: pointer;
+  transition: 120ms transform ease, 120ms border-color ease;
+}
+
+.field-card:hover {
+  transform: translateY(-2px);
+  border-color: #7488ff;
+}
+
+.field-title {
+  margin: 0;
+  font-size: 0.96rem;
+  color: #8da0ff;
+}
+
+.field-preview {
+  margin: 10px 0 0;
+  line-height: 1.4;
+  min-height: 72px;
+  white-space: pre-wrap;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.field-preview.placeholder {
+  color: #93a1de;
+  font-style: italic;
+}
+
+.floating-actions {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  background: #6f82ff;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(48, 70, 190, 0.45);
+}
+
+.action-btn-secondary {
+  background: #34417a;
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
+
+.editor-dialog {
+  border: none;
+  border-radius: 16px;
+  padding: 0;
+  width: min(720px, calc(100vw - 28px));
+  background: #0f1733;
+  color: #e7ecff;
+}
+
+.editor-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.dialog-shell {
+  padding: 16px;
+}
+
+.dialog-shell h2 {
+  margin: 4px 0 14px;
+}
+
+.dialog-label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#dialog-textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #30407a;
+  background: #101a3d;
+  color: #fff;
+  font-size: 0.96rem;
+  padding: 10px;
+  resize: vertical;
+}
+
+#dialog-textarea::placeholder {
+  color: #7f8dca;
+}
+
+.dialog-actions {
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.dialog-actions button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+#cancel-btn {
+  background: #25305d;
+  color: #dbe2ff;
+}
+
+#save-btn {
+  background: #6f82ff;
+  color: white;
+}
+
+@media (max-width: 760px) {
+  .floating-actions {
+    left: 14px;
+    right: 14px;
+  }
+
+  .action-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
